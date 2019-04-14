@@ -1,0 +1,11 @@
+mixin list(goods)
+    each index in goods
+        li(class="pic")
+            a(href= index.url)
+                img(src= index.src)
+                p= index.describe
+                b= index.money
+                span ￥
+                hr
+                span(class="number") 数量：#{index.number}
++list(goods)

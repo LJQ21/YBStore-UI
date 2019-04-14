@@ -1,0 +1,39 @@
+doctype html
+mixin order(orders)
+    each order in orders
+        div(class="mui-card")
+            div(class="mui-card-header")= order.id
+                span(style="color:red;") 待兑换
+            div(class=["mui-card-content","mui-row"])
+                div(class=["mui-card-content","mui-col-xs-4"] style="background-image:url(images/"+order.url+");height:6.25;")
+                    div(class="mui-col-xs-6" style="padding-left: 1.875rem;")
+                        h4= order.name
+                        p(style="height:2.5rem;width:5rem;overflow: hidden;text-overflow: ellipsis;-webkit-line-clamp:2;word-break:break-all;display:-webkit-box;-webkit-box-orient:vertical;")= order.describe
+                        = order.price
+                        span(style="font-size: 0.5625rem;") 网薪
+            div(class="mui-card-footer")
+                button(type="button" class=["mui-btn","mui-btn-danger"] style="display: block;margin-left: 13.125rem;") 兑换
+html
+    head
+        meta(charset="UTF-8")
+        link(rel='stylesheet', href='/stylesheets/home.css')
+    body
+        style.
+            .mui-control-content {
+                background-color: white;
+                min-height: 620px;
+            }
+             .mui-loading {
+                margin-top: 50px;
+            }
+        div(class="mui-content")
+             div(id="slider",class="mui-slider")
+                 div(id="sliderSegmentedControl",class=["mui-slider-indicator","mui-segmented-control","mui-segmented-control-inverter"])
+                     a(class="mui-control-item",href="#item1mobile") 未兑换
+                     a(class="mui-control-item",href="#item2mobile") 以兑换
+                     a(class="mui-control-item",href="#item3mobile") 全部订单
+                 div(id="sliderProgressBar",class=["mui-slider-progress-bar","mui-col-xs-4"])
+                 div(class="mui-slider-group")
+                     div(id="item1mobile" class=["mui-slider-progress-bar","mui-col-xs-4"])
+                     div(id="scroll1" class="mui-scroll-wrapper")
+                         div(class="mui-scroll")

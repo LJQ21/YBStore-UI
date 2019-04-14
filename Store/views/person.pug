@@ -1,0 +1,19 @@
+doctype html
+html
+    head
+        meta(charset="UTF-8")
+        link(rel='stylesheet', href='/stylesheets/home.css')
+    body
+        div(class="mui-content")
+            div(class="mui-row" style="margin: 0.325rem auto;padding: 0.725rem;")
+                div(class="mui-col-xs-6")
+                    img(src=person.url style=style="height: 6rem;padding-left: 3.125rem;")
+                div(class="mui-col-xs-6")= person.name
+                    p= person.money
+            ul(class="mui-table-view")
+                li(class="mui-table-view-cell")
+                    a(class="mui-navigate-right") 消费记录
+                li(class="mui-table-view-cell")
+                    a(class="mui-navigate-right") 问题反馈
+              li(class="mui-table-view-cell")
+                    a(class="mui-navigate-right") 联系我们

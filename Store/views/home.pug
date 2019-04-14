@@ -1,0 +1,74 @@
+doctype html
+mixin list(goods)
+    ul(class="wall")
+        each index in goods
+            li(class="pic")
+                a(href= index.url)
+                    img(src= index.src)
+                    p= index.describe
+                    b= index.money
+                    span ￥
+                    hr
+                    span(class="number") 数量：#{index.number}
+html
+    head
+        meta(charset="UTF-8")
+        title 易班首页
+        link(href="../css/mui.min.css",rel="stylesheet",type="text/css")
+        link(rel='stylesheet', href='/stylesheets/home.css')
+        script(src="/javascripts/mui.min.js")
+    body
+        #center
+            .mui-content
+                div(class="mui-slider",id="lb-slider")
+                    div(class=["mui-slider-group", "mui-slider-loop"])
+                        div(class=["mui-slider-item", "mui-slider-item-duplicate"])
+                            img(src="/images/4.jpg")
+                        .mui-slider-item
+                            img(src="/images/1.jpg")
+                        .mui-slider-item
+                            img(src="/images/2.jpg")
+                        .mui-slider-item
+                            img(src="/images/3.jpg")
+                        .mui-slider-item
+                            img(src="/images/4.jpg")
+                        div(class=["mui-slider-item", "mui-slider-item-duplicate"] )
+                            img(src="/images/1.jpg")
+                    .mui-slider-indicator
+                        div(class=["mui-indicator", "mui-active"])
+                        .mui-indicator
+                        .mui-indicator
+                        .mui-indicator
+                style.
+                    .mui-control-content {
+                        background-color: rgba(0, 0, 0, 0.005);
+                        min-height: 620px;
+                    }
+
+                    .mui-loading {
+                        margin-top: 50px;
+                    }
+                div(id="sp-slider",class="mui-slider")
+                    div(id="sliderSegmentedControl",class=["mui-slider-indicator", "mui-segmented-control", "mui-segmented-control-inverted"])
+                        a(class="mui-control-item",href="#item1mobile") 上架商品
+                        a(class="mui-control-item",href="#item2mobile") 即将上架
+                        a(class="mui-control-item",href="#item3mobile") 全部商品
+                    div(id="sliderProgressBar",class=["mui-slider-progress-bar", "mui-col-xs-4"])
+                    .mui-slider-group
+                        div(id="item1mobile" class=["mui-slider-item", "mui-control-content", "mui-active"])
+                            div(id="scroll1",class="mui-scroll-wrapper")
+                                .mui-scroll
+                                        +list(goods)
+                        div(id="item2mobile" class=["mui-slider-item", "mui-control-content"])
+                            div(id="scroll2",class="mui-scroll-wrapper")
+                                .mui-scroll
+                                    .mui-loading
+                                        .mui.spinner
+                                            +list(goods)
+                        div(id="item3mobile" class=["mui-slider-item", "mui-control-content"])
+                            div(id="scroll3",class="mui-scroll-wrapper")
+                                .mui-scroll
+                                    .mui-loading
+                                        .mui.spinner
+                                            +list(goods)
+        script(src="/javascripts/home.js")

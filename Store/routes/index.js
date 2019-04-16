@@ -33,8 +33,16 @@ router.get('/', function(req, res, next) {
   res.render("main",{goods:[{url : '#',src : '/images/1.jpg',describe : '我叫李健强',money : '999',number : '9'},{url : '127.0.0.1',src : '/images/1.jpg',describe : '我不叫李健强',money : '999',number : '9'},{url : '127.0.0.1',src : '/images/1.jpg',describe : '我就是李健强',money : '999',number : '9'}]});
 */
   //res.render("home");
-    res.render("main",{goods:[{url : '#',src : '/images/1.jpg',describe : '我叫李健强',money : '999',number : '9'},{url : '127.0.0.1',src : '/images/1.jpg',describe : '我不叫李健强',money : '999',number : '9'},{url : '127.0.0.1',src : '/images/1.jpg',describe : '我就是李健强',money : '999',number : '9'}]});
+    res.render("home",{goods:[{url : '#',src : '/images/1.jpg',describe : '我叫李健强',money : '999',number : '9'},{url : '127.0.0.1',src : '/images/1.jpg',describe : '我不叫李健强',money : '999',number : '9'},{url : '127.0.0.1',src : '/images/1.jpg',describe : '我就是李健强',money : '999',number : '9'}]});
 
+});
+
+router.get('/order',function (req,res,next) {
+    res.render("order");
+});
+
+router.get('/person',function (req,res,next) {
+    res.render("person");
 });
 
 module.exports = router;

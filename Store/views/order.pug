@@ -1,18 +1,21 @@
 doctype html
 mixin order(orders)
-    each order in orders
-        div(class="mui-card")
-            div(class="mui-card-header")= order.id
-                span(style="color:red;") 待兑换
-            div(class=["mui-card-content","mui-row"])
-                div(class=["mui-card-content","mui-col-xs-4"] style="background-image:url(images/"+order.url+");height:6.25;")
-                    div(class="mui-col-xs-6" style="padding-left: 1.875rem;")
-                        h4= order.name
-                        p(style="height:2.5rem;width:5rem;overflow: hidden;text-overflow: ellipsis;-webkit-line-clamp:2;word-break:break-all;display:-webkit-box;-webkit-box-orient:vertical;")= order.describe
-                        = order.price
-                        span(style="font-size: 0.5625rem;") 网薪
-            div(class="mui-card-footer")
-                button(type="button" class=["mui-btn","mui-btn-danger"] style="display: block;margin-left: 13.125rem;") 兑换
+    if orders
+        each order in orders
+            div(class="mui-card")
+                div(class="mui-card-header")= order.id
+                    span(style="color:red;") 待兑换
+                div(class=["mui-card-content","mui-row"])
+                    div(class=["mui-card-content","mui-col-xs-4"] style="background-image:url(images/"+order.url+");height:6.25;")
+                        div(class="mui-col-xs-6" style="padding-left: 1.875rem;")
+                            h4= order.name
+                            p(style="height:2.5rem;width:5rem;overflow: hidden;text-overflow: ellipsis;-webkit-line-clamp:2;word-break:break-all;display:-webkit-box;-webkit-box-orient:vertical;")= order.describe
+                            = order.price
+                            span(style="font-size: 0.5625rem;") 网薪
+                div(class="mui-card-footer")
+                    button(type="button" class=["mui-btn","mui-btn-danger"] style="display: block;margin-left: 13.125rem;") 兑换
+    else
+        h4(style="background-color: rgba(0,0,0,0.2);") 您还没有订单，请尽快购买中意的商品吧... ...
 html
     head
         include head
@@ -54,3 +57,4 @@ html
                      div(id="item1mobile" class=["mui-slider-progress-bar","mui-col-xs-4"])
                      div(id="scroll1" class="mui-scroll-wrapper")
                          div(class="mui-scroll")
+                             +order(orders)

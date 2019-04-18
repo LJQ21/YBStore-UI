@@ -1,7 +1,24 @@
 var express = require('express');
 var router = express.Router();
 var http = require("http");
+var cookiePareser=require('cookie-parser');
 
+
+/*
+//cookie拦截
+router.use('*',function (req,res,next) {
+   if(req.originalUrl=="/cookie"){
+       next();
+   }else {
+       if(req.cookies.name=="ljq"){
+           next();
+       }else{
+           res.redirect('cookie');
+           next
+       }
+   }
+});
+*/
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -33,7 +50,7 @@ router.get('/', function(req, res, next) {
   res.render("main",{goods:[{url : '#',src : '/images/1.jpg',describe : '我叫李健强',money : '999',number : '9'},{url : '127.0.0.1',src : '/images/1.jpg',describe : '我不叫李健强',money : '999',number : '9'},{url : '127.0.0.1',src : '/images/1.jpg',describe : '我就是李健强',money : '999',number : '9'}]});
 */
   //res.render("home");
-    res.render("home",{goods:[{url : '#',src : '/images/1.jpg',describe : '我叫李健强',money : '999',number : '9'},{url : '127.0.0.1',src : '/images/1.jpg',describe : '我不叫李健强',money : '999',number : '9'},{url : '127.0.0.1',src : '/images/1.jpg',describe : '我就是李健强',money : '999',number : '9'}]});
+    res.render("home",{goods:[{id : '12345',imgSrc : '/images/1.jpg',describe : '我叫李健强',price : '0',number : '1'},{id : '127.0.0.1',imgSrc : '/images/1.jpg',describe : '我不叫李健强',price : '999',number : '0'},{id : '127.0.0.1',imgSrc : '/images/1.jpg',describe : '我就是李健强',price : '999',number : '9'}]});
 
 });
 
@@ -43,6 +60,15 @@ router.get('/order',function (req,res,next) {
 
 router.get('/person',function (req,res,next) {
     res.render("person");
+});
+
+router.get('/cookie',function (req,res) {
+    res.cookie('name','ljq',{'maxAge':5000});
+    res.send(req.cookies);
+});
+
+router.get('/printf_cookie',function (req,res) {
+    res.send(req.cookies);
 });
 
 module.exports = router;

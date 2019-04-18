@@ -21,6 +21,7 @@ html
                 console.log(this.getAttribute('href'));
                 location.href = this.getAttribute('href');
             })
+    if person
         div(class="mui-content")
             div(class="mui-row" style="margin: 0.325rem auto;padding: 0.725rem;")
                 div(class="mui-col-xs-6")
@@ -34,3 +35,6 @@ html
                     a(class="mui-navigate-right") 问题反馈
                 li(class="mui-table-view-cell")
                     a(class="mui-navigate-right") 联系我们
+    else
+        div(class="mui-content")
+            h4 您还没有登陆，请您先登陆... ...
